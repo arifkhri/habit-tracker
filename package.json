@@ -1,19 +1,40 @@
 {
+  "name": "habit-tracker",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "run-s lint clean && cross-env PORT=${NEXT_PORT:-5000} next dev",
     "build": "next build",
-    "start": "next start"
+    "clean": "rimraf .next out",
+    "start": "next start",
+    "style-lint": "stylelint \"**/*.scss\" --fix",
+    "lint": "next lint --fix",
+    "analyze": "run-s lint build-stats",
+    "build-stats": "cross-env NODE_ENV=production ANALYZE=true npm run build"
   },
   "dependencies": {
     "next": "latest",
     "next-pwa": "^5.6.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "bootstrap": "^5.2.3",
+    "bootstrap-icons": "^1.10.3",
+    "dayjs": "^1.11.7",
+    "react-hook-form": "^7.43.0",
+    "zustand": "^4.3.2"
   },
   "devDependencies": {
     "@types/node": "17.0.4",
     "@types/react": "17.0.38",
-    "typescript": "4.5.4"
+    "typescript": "4.5.4",
+    "cross-env": "^7.0.3",
+    "eslint": "8.29.0",
+    "eslint-config-next": "13.0.6",
+    "eslint-plugin-jsx-a11y": "^6.6.1",
+    "eslint-plugin-react": "^7.31.10",
+    "npm-run-all": "^4.1.5",
+    "sass": "^1.58.0",
+    "stylelint": "^14.16.1",
+    "stylelint-config-standard-scss": "^6.1.0"
   }
 }
